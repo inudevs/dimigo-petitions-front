@@ -6,21 +6,20 @@
 
 <script>
 
-import Main_Category from '@/components/Main_Category.vue'
-import BackGround from '@/components/BackGround' 
-import Petitions_Category from '@/components/Petitions_Category' 
-import Petitions_Contents from '@/components/Petitions_Contents' 
-import Page_Number from '@/components/Page_Number' 
+import MainCategory from '@/components/MainCategory'
+import Background from '@/components/Background'
+import PetitionCategory from '@/components/PetitionCategory'
+import PetitionContent from '@/components/PetitionContent'
+import PageNumber from '@/components/PageNumber'
 
 export default {
-    components:
-    {
-        'main-category' : Main_Category,
-        'background' : BackGround,
-        'petitions-category' : Petitions_Category,
-        'petitions-contents' : Petitions_Contents,
-        'page-number' : Page_Number
-    }
+  components: {
+    MainCategory,
+    Background,
+    PetitionCategory,
+    PetitionContent,
+    PageNumber
+  }
 }
 </script>
 
