@@ -14,7 +14,7 @@ export default {
     class="header"
     :style="{
       backgroundImage:
-      'linear-gradient(rgba(0, 0, 0, .01), rgba(0, 0, 0, .01)), url('+require('../assets/hakbong.jpg')+')'
+      'linear-gradient(rgba(0, 0, 0, .01), rgba(0, 0, 0, .01)), url('+require('../assets/hakbong.jpeg')+')'
     }"
   >
     <dimi-navbar />
