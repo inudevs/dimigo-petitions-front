@@ -17,6 +17,9 @@ export default {
       'linear-gradient(rgba(0, 0, 0, .01), rgba(0, 0, 0, .01)), url('+require('../assets/hakbong.jpeg')+')'
     }"
   >
+    <a href="/">
+      <img class="header__logo" src="../assets/logo.svg">
+    </a>
     <dimi-navbar />
     <h1 class="header__title">
       디미청원
@@ -35,12 +38,21 @@ export default {
   background-size: cover;
   height: 25em;
 
+  &__logo {
+    height: 10em;
+    position: absolute;
+    top: 0;
+    left: 3em;
+    cursor: pointer;
+  }
+
   &__title {
     margin: 0;
     position: absolute;
-    left: 2rem;
+    left: 8rem;
     bottom: 1.5rem;
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 600;
     color: white;
   }
 }
