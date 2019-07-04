@@ -11,22 +11,24 @@
         </ul>
     </nav>
 </div>
-    
+
 </template>
 
 <script>
 export default {
-    data:
-    {
+  data:
+    function () {
+      return {
         category:
         [
-            { index:1, name:'디미고인' },
-            { index:2, name:'디미고라이프' },
-            { index:3, name:'베네듀' },
-            { index:4, name:'자체상담센터' },
-            { index:5, name:'학교 홈페이지' },
-            { index:6, name:'커뮤니티' }
+          { index: 1, name: '디미고인' },
+          { index: 2, name: '디미고라이프' },
+          { index: 3, name: '베네듀' },
+          { index: 4, name: '자체상담센터' },
+          { index: 5, name: '학교 홈페이지' },
+          { index: 6, name: '커뮤니티' }
         ]
+      }
     }
 }
 </script>
@@ -68,4 +70,3 @@ body
 }
 
 </style>
-

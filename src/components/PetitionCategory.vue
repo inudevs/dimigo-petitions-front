@@ -1,14 +1,13 @@
 <template>
-    <div>Petitions_Contents</div>
+    <div>Petitions_Category</div>
 </template>
 
 <script>
 export default {
-    
+
 }
 </script>
 
 <style>
 
 </style>
-
