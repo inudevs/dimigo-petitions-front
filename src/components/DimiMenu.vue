@@ -10,10 +10,14 @@ export default {
       분야별 청원
     </div>
     <div class="menu__item">
-      추천순
+      <a href="/petitions/best">
+        추천순 청원
+      </a>
     </div>
     <div class="menu__item">
-      답변된 청원
+      <a href="/petitions/answer">
+        답변된 청원
+      </a>  
     </div>
   </div>
 </template>
@@ -43,5 +47,11 @@ export default {
   &__item:not(:last-of-type){
     border-right: 1px solid #868e86;
   }
+}
+a
+{
+  text-decoration: none;
+  color: #868e86;
+  
 }
 </style>
