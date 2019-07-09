@@ -63,6 +63,11 @@ export default {
                 </ul>
 
         </div>
+        <div>
+            진행중 청원
+            <br>
+            만료된 청원
+        </div>
     </div>
     
 </template>

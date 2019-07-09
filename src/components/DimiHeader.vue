@@ -51,7 +51,7 @@ export default {
     position: absolute;
     left: 8rem;
     bottom: 1.5rem;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 600;
     color: white;
   }
