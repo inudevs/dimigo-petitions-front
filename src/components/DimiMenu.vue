@@ -7,15 +7,17 @@ export default {
 <template>
   <div class="menu">
     <div class="menu__item">
-      분야별 청원
+      <a href="/">
+        분야별 청원
+      </a>
     </div>
     <div class="menu__item">
-      <a href="/petitions/best">
+      <a href="/best">
         추천순 청원
       </a>
     </div>
     <div class="menu__item">
-      <a href="/petitions/answer">
+      <a href="/answer">
         답변된 청원
       </a>  
     </div>
@@ -52,6 +54,6 @@ a
 {
   text-decoration: none;
   color: #868e86;
-  
+
 }
 </style>
