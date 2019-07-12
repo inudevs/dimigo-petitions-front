@@ -50,6 +50,7 @@ export default {
     border-right: 1px solid #868e86;
   }
 }
+
 a
 {
   text-decoration: none;

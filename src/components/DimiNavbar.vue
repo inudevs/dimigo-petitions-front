@@ -43,6 +43,10 @@ export default {
           {
             name: '커뮤니티',
             href: null
+          },
+          {
+            name: 'INU',
+            href: 'https://inudevs.github.io/'
           }
         ]
       }
@@ -65,6 +69,7 @@ export default {
 
   &__item {
     padding: 1em;
+    padding-right: 2.5em;
     cursor: pointer;
     float: right;
   }

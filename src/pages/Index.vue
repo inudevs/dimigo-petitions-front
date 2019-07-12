@@ -2,13 +2,15 @@
 import DimiHeader from '@/components/DimiHeader'
 import DimiMenu from '@/components/DimiMenu'
 import FieldView from '@/components/FieldView'
+import FieldView2 from '@/components/FieldView2'
 
 export default {
   name: 'Index',
   components: {
     DimiHeader,
     DimiMenu,
-    FieldView
+    FieldView,
+    FieldView2
   }
 }
 </script>
@@ -19,16 +21,16 @@ export default {
     <dimi-menu />
     <div class="content">
       <field-view />
+      <field-view2 />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-/*
+
 .content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   width: 100%;
 }
-*/
 </style>
