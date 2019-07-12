@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: 'FieldView',
+    name: 'FieldView1',
     data:
     function() {
         return {
@@ -60,23 +60,19 @@ export default {
                 >
                 {{ idx.name }}
                 </li>
-                </ul>
-
-        </div>
-        <div>
-            진행중 청원
-            <br>
-            만료된 청원
+            </ul>
         </div>
     </div>
     
 </template>
 
 <style lang="scss" scoped>
+
 ul {
     margin: 0px;
     padding: 0px;
 }
+
 #mark {
     display: inline-block;
     width: 5px;
@@ -87,6 +83,8 @@ ul {
     margin-right: 6px;
     margin-left: 6px;
 }
+
+
 #category__content {
     text-decoration: none;
     font-size: 16px;
@@ -96,24 +94,27 @@ ul {
     font-weight: 500;
     float: left;
 }
+
 .field {
     display: grid;
+    justify-content: center;
     overflow: hidden;
+    margin-bottom: 5em;
     &__title {
         font-size: 1.5em;
         margin-top: 3em;
-        margin-left: 3em;
+        margin-left: 1em;
     }
     &__category__base {
         display: flex;
         flex-direction: row;
-        border: 1px solid rgb(4, 4, 163);
+        border: 1px solid #761010;
         overflow: hidden;
         padding: 15px;
         margin-left: 6.5em;
         margin-right: 7em;
         margin-top: 1.5em;
+        width: 55em;
     }
-
 }
 </style>
