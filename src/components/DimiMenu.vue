@@ -8,7 +8,7 @@ export default {
         return [
           { name: '분야별 청원', href: '/' },
           { name: '추천순 청원', href: '/best' },
-          { name: '답변순 청원', href: '/answer' },
+          { name: '답변순 청원', href: '/answer' }
         ]
       }
     }
@@ -23,9 +23,18 @@ export default {
       v-for="(item, idx) in menu"
       :key="idx"
     >
-      <a :href="item.href">
+      <a
+        v-if="item.href"
+        :href="item.href"
+      >
         {{ item.name }}
       </a>
+      <span
+        v-else
+        @click="item.onClick"
+      >
+        {{ item.name }}
+      </span>
     </div>
   </div>
 </template>

@@ -8,7 +8,15 @@ export default {
   components: {
     DimiHeader,
     DimiMenu,
-    FieldView,
+    FieldView
+  },
+  methods: {
+    onClickProceeding () {
+
+    },
+    onClickExpired () {
+
+    }
   }
 }
 </script>
@@ -21,11 +29,10 @@ export default {
       <field-view />
       <dimi-menu
         :menu="[
-          { name: '진행중 청원' }, 
-          { name: '만료된 청원' }
+          { name: '진행중 청원', onClick: onClickProceeding },
+          { name: '만료된 청원', onClick: onClickExpired }
         ]"
       />
-      </div>
     </div>
   </div>
 </template>
