@@ -17,7 +17,7 @@ export default new Router({
     },
     {
       path: '/best',
-      name: 'index',
+      name: 'best',
       component: Best
     },
     {

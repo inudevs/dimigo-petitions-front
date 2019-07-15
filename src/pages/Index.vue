@@ -2,7 +2,6 @@
 import DimiHeader from '@/components/DimiHeader'
 import DimiMenu from '@/components/DimiMenu'
 import FieldView from '@/components/FieldView'
-import FieldView2 from '@/components/FieldView2'
 
 export default {
   name: 'Index',
@@ -10,7 +9,6 @@ export default {
     DimiHeader,
     DimiMenu,
     FieldView,
-    FieldView2
   }
 }
 </script>
@@ -21,16 +19,21 @@ export default {
     <dimi-menu />
     <div class="content">
       <field-view />
-      <field-view2 />
+      <dimi-menu
+        :menu="[
+          { name: '진행중 청원' }, 
+          { name: '만료된 청원' }
+        ]"
+      />
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
 .content {
   display: flex;
-  flex-direction: column;
   width: 100%;
+  flex-direction: column;
 }
 </style>
