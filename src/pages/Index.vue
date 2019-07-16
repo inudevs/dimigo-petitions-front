@@ -2,15 +2,21 @@
 import DimiHeader from '@/components/DimiHeader'
 import DimiMenu from '@/components/DimiMenu'
 import FieldView from '@/components/FieldView'
-import FieldView2 from '@/components/FieldView2'
 
 export default {
   name: 'Index',
   components: {
     DimiHeader,
     DimiMenu,
-    FieldView,
-    FieldView2
+    FieldView
+  },
+  methods: {
+    onClickProceeding () {
+
+    },
+    onClickExpired () {
+
+    }
   }
 }
 </script>
@@ -21,16 +27,12 @@ export default {
     <dimi-menu />
     <div class="content">
       <field-view />
-      <field-view2 />
+      <dimi-menu
+        :menu="[
+          { name: '진행중 청원', onClick: onClickProceeding },
+          { name: '만료된 청원', onClick: onClickExpired }
+        ]"
+      />
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-
-.content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-</style>

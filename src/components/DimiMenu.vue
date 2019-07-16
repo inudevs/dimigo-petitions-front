@@ -1,25 +1,40 @@
 <script>
 export default {
-  name: 'DimiMenu'
+  name: 'DimiMenu',
+  props: {
+    menu: {
+      type: Array,
+      default: function () {
+        return [
+          { name: '분야별 청원', href: '/' },
+          { name: '추천순 청원', href: '/best' },
+          { name: '답변순 청원', href: '/answer' }
+        ]
+      }
+    }
+  }
 }
 </script>
 
 <template>
   <div class="menu">
-    <div class="menu__item">
-      <a href="/">
-        분야별 청원
+    <div
+      class="menu__item"
+      v-for="(item, idx) in menu"
+      :key="idx"
+    >
+      <a
+        v-if="item.href"
+        :href="item.href"
+      >
+        {{ item.name }}
       </a>
-    </div>
-    <div class="menu__item">
-      <a href="/best">
-        추천순 청원
-      </a>
-    </div>
-    <div class="menu__item">
-      <a href="/answer">
-        답변된 청원
-      </a>  
+      <span
+        v-else
+        @click="item.onClick"
+      >
+        {{ item.name }}
+      </span>
     </div>
   </div>
 </template>
@@ -27,34 +42,32 @@ export default {
 <style lang="scss" scoped>
 .menu {
   display: flex;
-  flex-direction: row;
   width: 100%;
+  flex-direction: row;
   justify-content: space-around;
   border: 1px solid #868e96;
 
   &__item {
     display: flex;
     width: 100%;
-    justify-content: center;
     align-content: center;
+    justify-content: center;
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
+    color: #868e96;
+    cursor: pointer;
     font-size: 1.1rem;
     font-weight: 400;
-    color: #868e96;
     user-select: none;
-    cursor: pointer;
   }
 
-  &__item:not(:last-of-type){
+  &__item:not(:last-of-type) {
     border-right: 1px solid #868e86;
   }
 }
 
-a
-{
-  text-decoration: none;
+a {
   color: #868e86;
-
+  text-decoration: none;
 }
 </style>
