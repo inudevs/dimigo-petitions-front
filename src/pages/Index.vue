@@ -36,11 +36,3 @@ export default {
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.content {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-}
-</style>
