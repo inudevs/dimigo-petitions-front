@@ -31,34 +31,34 @@ export default {
 .header {
   position: relative;
   display: inline-block;
-  vertical-align: middle;
   width: 100%;
-  background-repeat: no-repeat;
-  background-position: center 0;
-  background-size: cover;
   height: 25em;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  vertical-align: middle;
 
   &__logo {
-    height: 10em;
     position: absolute;
     top: 0;
     left: 3em;
+    height: 10em;
     cursor: pointer;
   }
 
   &__title {
-    margin: 0;
     position: absolute;
-    left: 8rem;
     bottom: 1.5rem;
+    left: 8rem;
+    margin: 0;
+    color: #fff;
     font-size: 2.5rem;
     font-weight: 600;
-    color: white;
   }
 }
 
 .navbar {
-  margin-top: 2em;
   bottom: 0;
+  margin-top: 2em;
 }
 </style>

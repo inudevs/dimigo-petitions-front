@@ -57,12 +57,12 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   &__list {
-    padding: 0;
-    margin: 0;
     display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content: flex-end;
-    width: 100%;
+    padding: 0;
+    margin: 0;
     background-color: rgba(0, 0, 0, 0.65);
     list-style-type: none;
   }
@@ -79,12 +79,9 @@ export default {
   }
 
   &__link {
+    color: #fff;
     text-align: center;
     text-decoration: none;
-    color: white;
-  }
-
-  @media (max-width: 700px) {
   }
 }
 </style>
