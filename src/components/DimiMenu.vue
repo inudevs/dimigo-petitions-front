@@ -6,11 +6,17 @@ export default {
       type: Array,
       default: function () {
         return [
-          { name: '분야별 청원', href: '/' },
-          { name: '추천순 청원', href: '/best' },
-          { name: '답변순 청원', href: '/answer' }
+          { name: '분야별 청원', route: 'index' },
+          { name: '추천순 청원', route: 'best' },
+          { name: '답변순 청원', route: 'answer' }
         ]
       }
+    }
+  },
+  methods: {
+    onClick (item) {
+      if (item.onClick) return item.onClick()
+      this.$router.push({ name: item.route })
     }
   }
 }
@@ -22,19 +28,9 @@ export default {
       class="menu__item"
       v-for="(item, idx) in menu"
       :key="idx"
+      @click="onClick(item)"
     >
-      <a
-        v-if="item.href"
-        :href="item.href"
-      >
-        {{ item.name }}
-      </a>
-      <span
-        v-else
-        @click="item.onClick"
-      >
-        {{ item.name }}
-      </span>
+      {{ item.name }}
     </div>
   </div>
 </template>
