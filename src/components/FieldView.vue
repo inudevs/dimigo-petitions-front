@@ -48,9 +48,15 @@ export default {
     <div class="field__title">
       <div class="mark"></div>청원 분야별 보기
     </div>
-    <div class="field__category__base">
+    <div class="field__categories">
       <ul>
-        <li v-for="(item, idx) in category" :key="idx" class="category__content">{{ item.name }}</li>
+        <li
+          v-for="(item, idx) in category"
+          :key="idx"
+          class="field__category"
+        >
+          {{ item.name }}
+        </li>
       </ul>
     </div>
   </div>
@@ -68,16 +74,6 @@ ul {
   vertical-align: middle;
 }
 
-.category__content {
-  display: block;
-  padding: 0.5rem 1rem;
-  border-radius: 3px;
-  float: left;
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
 .field {
   overflow: hidden;
   justify-content: center;
@@ -89,12 +85,24 @@ ul {
     font-weight: 500;
   }
 
-  &__category__base {
+  &__categories {
     display: flex;
     overflow: hidden;
     flex-direction: row;
     padding: 1.2rem;
     border: 1px solid #761010;
+    margin-right: 5rem;
+    margin-left: 5rem;
+  }
+
+  &__category {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    float: left;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
   }
 }
 </style>
