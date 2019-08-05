@@ -1,21 +1,13 @@
-# dimigo-petitions-front
+# Flow Book
 
-> A Vue.js project
+> SDS_JA_Hackathon_team_bordercoille  
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+<br>
+  
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+김상민(팀장)
+문형일(프론트엔드)
+윤영창(백엔드)
+장종우(안드로이드)
+박승아(디자인)
+```

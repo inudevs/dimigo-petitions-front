@@ -1,38 +1,28 @@
 <script>
-import DimiHeader from '@/components/DimiHeader'
-import DimiMenu from '@/components/DimiMenu'
-import FieldView from '@/components/FieldView'
+import InfoUser from '@/components/InfoUser'
+import MainFunc from '@/components/MainFunc'
 
 export default {
-  name: 'Index',
-  components: {
-    DimiHeader,
-    DimiMenu,
-    FieldView
-  },
-  methods: {
-    onClickProceeding () {
-
-    },
-    onClickExpired () {
-
+    name: 'Index',
+    components: {
+        InfoUser,
+        MainFunc
     }
-  }
 }
 </script>
 
 <template>
-  <div class="page">
-    <dimi-header />
-    <dimi-menu />
-    <div class="content">
-      <field-view />
-      <dimi-menu
-        :menu="[
-          { name: '진행중 청원', onClick: onClickProceeding },
-          { name: '만료된 청원', onClick: onClickExpired }
-        ]"
-      />
-    </div>
-  </div>
+    <div class="page">
+        <info-user />
+        <main-func />
+    </div>    
 </template>
+
+<style lang="scss" scoped>
+.page
+{
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}
+</style>
