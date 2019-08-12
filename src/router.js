@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 import Index from '@/pages/Index.vue'
 import Best from '@/pages/Best.vue'
-import Answer from '@/pages/Answer.vue'
 
 Vue.use(Router)
 
@@ -19,11 +18,6 @@ export default new Router({
       path: '/best',
       name: 'best',
       component: Best
-    },
-    {
-      path: '/answer',
-      name: 'answer',
-      component: Answer
     }
   ]
 })

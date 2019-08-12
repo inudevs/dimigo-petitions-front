@@ -41,13 +41,17 @@ export default {
             href: 'https://www.dimigo.hs.kr/'
           },
           {
-            name: '커뮤니티',
-            href: null
-          },
-          {
-            name: 'INU',
-            href: 'https://inudevs.github.io/'
+            name: '대나무숲',
+            href: 'https://bamboo.dimigo.dev'
           }
+          // , {
+          //   name: '커뮤니티',
+          //   href: null
+          // },
+          // {
+          //   name: 'INU',
+          //   href: 'https://inudevs.github.io/'
+          // }
         ]
       }
     }

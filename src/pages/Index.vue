@@ -19,6 +19,34 @@ export default {
       // 만료된 청원 클릭 시
 
     }
+  },
+  data () {
+    return {
+      tab: 0,
+      list: [
+        {
+          id: 1,
+          name: '롱패딩을 입고 싶어요',
+          likes: 3150,
+          expire: '2019-09-15',
+          topic: '교칙'
+        },
+        {
+          id: 2,
+          name: '롱패딩을 입고 싶어요',
+          likes: 3150,
+          expire: '2019-09-15',
+          topic: '교칙'
+        },
+        {
+          id: 3,
+          name: '롱패딩을 입고 싶어요',
+          likes: 3150,
+          expire: '2019-09-15',
+          topic: '교칙'
+        }
+      ]
+    }
   }
 }
 </script>
@@ -36,20 +64,37 @@ export default {
         ]"
       />
       <div class="index__list">
+        <div class="index__title">
+          {{ ['진행중인 청원', '이미 만료된 청원'][tab] }}
+        </div>
         <div class="index__table">
           <div class="index__row head">
             <div class="index__cell head">번호</div>
-            <div class="index__cell head">카테고리</div>
+            <div class="index__cell head">분류</div>
             <div class="index__cell head">제목</div>
             <div class="index__cell head">청원 만료일</div>
             <div class="index__cell head">참여인원</div>
           </div>
-          <div class="index__row">
-            <div class="index__cell">1</div>
-            <div class="index__cell">교칙</div>
-            <div class="index__cell">롱패딩을 입고 싶어요</div>
-            <div class="index__cell">2019-09-15</div>
-            <div class="index__cell">3,150명</div>
+          <div
+            class="index__row"
+            v-for="(item, idx) in list"
+            :key="idx"
+          >
+            <div class="index__cell">
+              {{ item.id }}
+            </div>
+            <div class="index__cell">
+              {{ item.topic }}
+            </div>
+            <div class="index__cell">
+              {{ item.name }}
+            </div>
+            <div class="index__cell">
+              {{ item.expire }}
+            </div>
+            <div class="index__cell">
+              {{ item.likes.toLocaleString() }}명
+            </div>
           </div>
         </div>
       </div>
@@ -59,6 +104,15 @@ export default {
 
 <style lang="scss" scoped>
 .index {
+
+  &__list {
+    margin-top: 1.5rem;
+  }
+
+  &__title {
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+  }
 
   &__table {
     display: flex;
@@ -72,8 +126,15 @@ export default {
     border-bottom: 1px solid rgb(230, 230, 230);
 
     &.head {
-      margin-top: 1.5rem;
       border-top: 2px solid black;
+    }
+
+    &:not(.head) {
+      cursor: pointer;
+    }
+
+    &:not(.head):hover {
+      background-color: rgb(248, 248, 248);
     }
   }
 
