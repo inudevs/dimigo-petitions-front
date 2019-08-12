@@ -6,7 +6,7 @@ import router from './router'
 import './style.scss'
 
 Vue.prototype.$api = axios.create({
-  baseURL: 'http://localhost:5001/'
+  baseURL: 'http://localhost:5000/'
 })
 
 Vue.config.productionTip = false

@@ -6,9 +6,9 @@ export default {
       type: Array,
       default: function () {
         return [
-          { name: '분야별 청원', route: 'index' },
-          { name: '추천순 청원', route: 'best' },
-          { name: '답변순 청원', route: 'answer' }
+          { name: '최신순 청원', value: 'topic' },
+          { name: '추천순 청원', value: 'best' },
+          { name: '답변순 청원', value: 'answer' }
         ]
       }
     }
@@ -16,7 +16,7 @@ export default {
   methods: {
     onClick (item) {
       if (item.onClick) return item.onClick()
-      this.$router.push({ name: item.route })
+      this.$emit('click', item.value)
     }
   }
 }

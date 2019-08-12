@@ -11,13 +11,8 @@ export default {
     // ,FieldView
   },
   methods: {
-    onClickProceeding () {
-      // 진행중 청원 클릭 시
-
-    },
-    onClickExpired () {
-      // 만료된 청원 클릭 시
-
+    onClickMenu (value) {
+      console.log(value)
     }
   },
   data () {
@@ -41,7 +36,7 @@ export default {
 <template>
   <div class="page">
     <dimi-header />
-    <dimi-menu />
+    <dimi-menu @click="onClickMenu" />
     <div class="content">
       <!-- <field-view /> -->
       <!-- <dimi-menu
