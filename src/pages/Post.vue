@@ -8,7 +8,6 @@ export default {
   },
   data () {
     return {
-      token: '',
       post: {}
     }
   },
@@ -23,9 +22,17 @@ export default {
       console.error(error)
     }
   },
+  computed: {
+    isLogin () {
+      return this.$store.state.isLogin
+    },
+    token () {
+      return this.$store.state.token
+    }
+  },
   methods: {
     onClickTextarea () {
-      if (!this.token) {
+      if (!this.isLogin) {
         this.$router.push({ name: 'login' })
       }
     }
@@ -87,7 +94,7 @@ export default {
             <div class="post__form">
               <textarea
                 class="post__input"
-                :placeholder="token ? '응원의 댓글을 남겨 주세요.' : '디미고 계정으로 로그인이 필요합니다.'"
+                :placeholder="isLogin ? '응원의 댓글을 남겨 주세요.' : '디미고 계정으로 로그인이 필요합니다.'"
                 @click="onClickTextarea"
               />
               <div class="post__button">동의</div>
