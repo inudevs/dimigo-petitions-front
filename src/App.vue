@@ -16,4 +16,8 @@ export default {
 * {
   font-family: 'Spoqa Han Sans', 'Sans-serif';
 }
+
+.page {
+  margin-bottom: 2rem;
+}
 </style>
