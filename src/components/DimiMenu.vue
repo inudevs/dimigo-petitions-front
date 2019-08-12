@@ -52,7 +52,7 @@ export default {
     padding-bottom: 0.8rem;
     color: #868e96;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     user-select: none;
   }
