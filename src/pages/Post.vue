@@ -63,6 +63,18 @@ export default {
               </span>
             </div>
           </div>
+          <div class="post__article">
+            <h2 class="post__desc">청원내용</h2>
+          </div>
+          <div class="post__comments">
+            <h2 class="post__desc">
+              청원동의 <strong>{{ post.likes.toLocaleString() }}</strong> 명
+            </h2>
+            <div class="post__form">
+              <textarea class="post__input" />
+              <div class="post__button">동의</div>
+            </div>
+          </div>
         </div>
         <div class="post__side">
         </div>
@@ -138,6 +150,50 @@ export default {
 
   &__meta-value {
     font-weight: 300;
+  }
+
+  &__desc {
+    color: rgb(58, 58, 58);
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0;
+    border-bottom: 1px solid rgb(201, 201, 201);
+
+    strong {
+      color: #ed1280;
+    }
+  }
+
+  &__article {
+    width: 85%;
+  }
+
+  &__comments {
+    width: 85%;
+  }
+
+  &__form {
+    display: flex;
+    background-color: rgb(238, 238, 238);
+    padding: 1rem 1.1rem;
+  }
+
+  &__input {
+    flex: 1 1;
+    margin-right: 0.8rem;
+    font-size: 1rem;
+  }
+
+  &__button {
+    width: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #ed1280;
+    font-size: 1rem;
+    padding: 1.5rem 0.3rem;
   }
 }
 </style>
