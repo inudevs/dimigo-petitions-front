@@ -16,7 +16,7 @@ export default {
         start: '2019-08-12',
         expire: '2019-09-15',
         author: '테**',
-        article: '헉 사실 이건 간단한 테스트입니다. 간단한.',
+        content: '헉 사실 이건 간단한 테스트입니다. 간단한.',
         comments: [
           {
             author: '김**',
@@ -37,6 +37,15 @@ export default {
         ]
       }
     }
+  },
+  async created () {
+    try {
+      const { data } = await this.$api.get(`/posts/${this.$route.params.id}`)
+      console.log(data)
+      this.post = data
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 </script>
@@ -51,7 +60,7 @@ export default {
             - {{ post.status ? '청원진행중' : '청원종료' }} -
           </span>
           <h1 class="post__title">
-            {{ post.title }}
+            {{ post.name }}
           </h1>
           <span class="post__likes">
             참여인원: [ <strong>{{ post.likes.toLocaleString() }}</strong>명 ]
@@ -85,7 +94,7 @@ export default {
           <div class="post__article">
             <h2 class="post__desc">청원내용</h2>
             <div class="post__article-content">
-              {{ post.article }}
+              {{ post.content }}
             </div>
           </div>
           <div class="post__comments">

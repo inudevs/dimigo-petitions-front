@@ -1,14 +1,14 @@
 <script>
 import DimiHeader from '@/components/DimiHeader'
 import DimiMenu from '@/components/DimiMenu'
-import FieldView from '@/components/FieldView'
+// import FieldView from '@/components/FieldView'
 
 export default {
   name: 'Index',
   components: {
     DimiHeader,
-    DimiMenu,
-    FieldView
+    DimiMenu
+    // ,FieldView
   },
   methods: {
     onClickProceeding () {
@@ -23,32 +23,16 @@ export default {
   data () {
     return {
       tab: 0,
-      list: [
-        {
-          id: 'test',
-          idx: 1,
-          name: '롱패딩을 입고 싶어요',
-          likes: 3150,
-          expire: '2019-09-15',
-          topic: '교칙'
-        },
-        {
-          id: 'test',
-          idx: 2,
-          name: '롱패딩을 입고 싶어요',
-          likes: 3150,
-          expire: '2019-09-15',
-          topic: '교칙'
-        },
-        {
-          id: 'test',
-          idx: 3,
-          name: '롱패딩을 입고 싶어요',
-          likes: 3150,
-          expire: '2019-09-15',
-          topic: '교칙'
-        }
-      ]
+      list: []
+    }
+  },
+  async created () {
+    try {
+      const { data } = await this.$api.get('/posts/')
+      console.log(data)
+      this.list = data.posts
+    } catch (error) {
+      console.error(error)
     }
   }
 }
@@ -59,13 +43,13 @@ export default {
     <dimi-header />
     <dimi-menu />
     <div class="content">
-      <field-view />
-      <dimi-menu
+      <!-- <field-view /> -->
+      <!-- <dimi-menu
         :menu="[
           { name: '진행중 청원', onClick: onClickProceeding },
           { name: '만료된 청원', onClick: onClickExpired }
         ]"
-      />
+      /> -->
       <div class="index__list">
         <div class="index__title">
           {{ ['진행중인 청원', '이미 만료된 청원'][tab] }}
@@ -109,9 +93,9 @@ export default {
 <style lang="scss" scoped>
 .index {
 
-  &__list {
-    margin-top: 1.5rem;
-  }
+  // &__list {
+  //   margin-top: 1.5rem;
+  // }
 
   &__title {
     margin-bottom: 1.2rem;
