@@ -20,7 +20,7 @@ export default {
         console.log(this.form)
         const { data } = await this.$api.post('/auth/login', this.form)
         console.log(data)
-        this.$store.commit('setToken', data.token)
+        this.$store.commit('login', data.token)
         this.$router.push({ name: 'index' })
       } catch (error) {
         console.error(error)
