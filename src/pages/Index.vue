@@ -25,21 +25,24 @@ export default {
       tab: 0,
       list: [
         {
-          id: 1,
+          id: 'test',
+          idx: 1,
           name: '롱패딩을 입고 싶어요',
           likes: 3150,
           expire: '2019-09-15',
           topic: '교칙'
         },
         {
-          id: 2,
+          id: 'test',
+          idx: 2,
           name: '롱패딩을 입고 싶어요',
           likes: 3150,
           expire: '2019-09-15',
           topic: '교칙'
         },
         {
-          id: 3,
+          id: 'test',
+          idx: 3,
           name: '롱패딩을 입고 싶어요',
           likes: 3150,
           expire: '2019-09-15',
@@ -79,9 +82,10 @@ export default {
             class="index__row"
             v-for="(item, idx) in list"
             :key="idx"
+            @click="$router.push({ name: 'post', params: { id: item.id } })"
           >
             <div class="index__cell">
-              {{ item.id }}
+              {{ item.idx }}
             </div>
             <div class="index__cell">
               {{ item.topic }}
