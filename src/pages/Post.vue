@@ -236,6 +236,7 @@ export default {
   }
 
   &__button {
+    cursor: pointer;
     width: 8rem;
     display: flex;
     justify-content: center;
