@@ -8,34 +8,8 @@ export default {
   },
   data () {
     return {
-      post: {
-        title: '롱패딩을 입고 싶어요',
-        status: true,
-        likes: 3150,
-        topic: '교칙',
-        start: '2019-08-12',
-        expire: '2019-09-15',
-        author: '테**',
-        content: '헉 사실 이건 간단한 테스트입니다. 간단한.',
-        comments: [
-          {
-            author: '김**',
-            content: '동의합니다!'
-          },
-          {
-            author: '김**',
-            content: '동의합니다!'
-          },
-          {
-            author: '김**',
-            content: '동의합니다!'
-          },
-          {
-            author: '김**',
-            content: '동의합니다!'
-          }
-        ]
-      }
+      token: '',
+      post: {}
     }
   },
   async created () {
@@ -43,8 +17,17 @@ export default {
       const { data } = await this.$api.get(`/posts/${this.$route.params.id}`)
       console.log(data)
       this.post = data
+
+      // TODO: auth check -> token
     } catch (error) {
       console.error(error)
+    }
+  },
+  methods: {
+    onClickTextarea () {
+      if (!this.token) {
+        this.$router.push({ name: 'login' })
+      }
     }
   }
 }
@@ -102,7 +85,11 @@ export default {
               청원동의 <strong>{{ post.likes.toLocaleString() }}</strong> 명
             </h2>
             <div class="post__form">
-              <textarea class="post__input" />
+              <textarea
+                class="post__input"
+                :placeholder="token ? '응원의 댓글을 남겨 주세요.' : '디미고 계정으로 로그인이 필요합니다.'"
+                @click="onClickTextarea"
+              />
               <div class="post__button">동의</div>
             </div>
             <div class="post__comments-list">
@@ -245,6 +232,7 @@ export default {
     flex: 1 1;
     margin-right: 0.8rem;
     font-size: 1rem;
+    padding: 0.5rem;
   }
 
   &__button {
