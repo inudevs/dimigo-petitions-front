@@ -15,7 +15,26 @@ export default {
         topic: '교칙',
         start: '2019-08-12',
         expire: '2019-09-15',
-        author: '테**'
+        author: '테**',
+        article: '헉 사실 이건 간단한 테스트입니다. 간단한.',
+        comments: [
+          {
+            author: '김**',
+            content: '동의합니다!'
+          },
+          {
+            author: '김**',
+            content: '동의합니다!'
+          },
+          {
+            author: '김**',
+            content: '동의합니다!'
+          },
+          {
+            author: '김**',
+            content: '동의합니다!'
+          }
+        ]
       }
     }
   }
@@ -65,6 +84,9 @@ export default {
           </div>
           <div class="post__article">
             <h2 class="post__desc">청원내용</h2>
+            <div class="post__article-content">
+              {{ post.article }}
+            </div>
           </div>
           <div class="post__comments">
             <h2 class="post__desc">
@@ -73,6 +95,20 @@ export default {
             <div class="post__form">
               <textarea class="post__input" />
               <div class="post__button">동의</div>
+            </div>
+            <div class="post__comments-list">
+              <div
+                class="post__comment"
+                v-for="(comment, idx) in post.comments"
+                :key="idx"
+              >
+                <span class="post__comment-author">
+                  {{ comment.author }}
+                </span>
+                <span class="post__comment-content">
+                  {{ comment.content }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -165,12 +201,29 @@ export default {
     }
   }
 
+  &__article-content {
+    margin: 1rem 0;
+  }
+
   &__article {
     width: 85%;
   }
 
   &__comments {
     width: 85%;
+  }
+
+  &__comment {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem 0.5rem;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    font-size: 1rem;
+  }
+
+  &__comment-author {
+    font-weight: 600;
+    color: black;
   }
 
   &__form {
