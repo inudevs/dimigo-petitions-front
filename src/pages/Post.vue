@@ -33,7 +33,12 @@ export default {
   methods: {
     onClickTextarea () {
       if (!this.isLogin) {
-        this.$router.push({ name: 'login' })
+        this.$router.push({
+          name: 'login',
+          query: {
+            redirect: this.$route.path
+          }
+        })
       }
     }
   }
