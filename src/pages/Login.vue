@@ -110,6 +110,7 @@ export default {
     padding: 0.5rem;
     box-sizing: border-box;
     margin-bottom: 0.5rem;
+    border: 1px solid #868e96;
   }
 
   &__button {
