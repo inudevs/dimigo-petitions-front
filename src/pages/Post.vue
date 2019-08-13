@@ -10,7 +10,9 @@ export default {
     return {
       post_id: this.$route.params.id,
       post: {},
-      comment: ''
+      comment: '',
+      editComment: '',
+      edit: false
     }
   },
   async created () {
@@ -29,7 +31,9 @@ export default {
   },
   methods: {
     async updatePost () {
+      this.edit = false
       this.comment = ''
+      this.editComment = ''
       console.log(this.userId, this.token)
       try {
         const { data } = await this.$api.get(`/posts/${this.post_id}`)
@@ -73,6 +77,24 @@ export default {
         this.updatePost()
       } catch (error) {
         await this.$swal('에러!', '동의하지 않은 청원입니다.', 'error')
+      }
+    },
+    onClickEdit (content) {
+      this.edit = !(this.edit)
+      this.editComment = content
+    },
+    async onClickSubmitEdit () {
+      try {
+        await this.$api.put(`/comments/${this.post_id}`, {
+          content: this.editComment
+        }, {
+          headers: {
+            Authorization: `Bearer ${this.token}`
+          }
+        })
+        this.updatePost()
+      } catch (error) {
+        await this.$swal('에러!', '댓글 수정 중 에러가 발생했습니다.', 'error')
       }
     }
   }
@@ -159,8 +181,33 @@ export default {
                   >
                     삭제
                   </span>
+                  <span
+                    class="post__comment-edit"
+                    v-if="comment.author_id === userId"
+                    @click="onClickEdit(comment.content)"
+                  >
+                    수정
+                  </span>
                 </span>
-                <span class="post__comment-content">
+                <div
+                  class="post__edit"
+                  v-if="edit && comment.author_id === userId"
+                >
+                  <textarea
+                    class="post__edit-input"
+                    v-model="editComment"
+                  />
+                  <div
+                    class="post__edit-button"
+                    @click="onClickSubmitEdit"
+                  >
+                    수정하기
+                  </div>
+                </div>
+                <span
+                  class="post__comment-content"
+                  v-else
+                >
                   {{ comment.content }}
                 </span>
               </div>
@@ -292,10 +339,46 @@ export default {
     }
   }
 
+  &__comment-edit {
+    float: right;
+    cursor: pointer;
+    font-weight: 500;
+    color: #adb5bd;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
   &__form {
     display: flex;
     background-color: rgb(238, 238, 238);
     padding: 1rem 1.1rem;
+  }
+
+  &__edit {
+    display: flex;
+    margin-top: 0.2rem;
+  }
+
+  &__edit-input {
+    flex: 1 1;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  &__edit-button {
+    cursor: pointer;
+    width: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #868e96;
+    font-size: 1rem;
+    padding: 1.5rem 0.3rem;
   }
 
   &__input {
