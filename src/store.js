@@ -7,12 +7,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLogin: false,
-    token: ''
+    token: '',
+    id: ''
   },
   mutations: {
-    login (state, value) {
+    login (state, token) {
       state.isLogin = true
-      state.token = value
+      state.token = token
+    },
+    saveID (state, _id) {
+      state.id = _id
     }
     // ,logout (state) {
     //   state.isLogin = false

@@ -27,6 +27,7 @@ export default {
         const { data } = await this.$api.post('/auth/login', this.form)
         console.log(data)
         this.$store.commit('login', data.token)
+        this.$store.commit('saveID', data.id)
         if (this.redirect) this.$router.push(this.redirect)
         else this.$router.push({ name: 'index' })
       } catch (error) {

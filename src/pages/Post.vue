@@ -8,19 +8,13 @@ export default {
   },
   data () {
     return {
-      post: {}
+      post_id: this.$route.params.id,
+      post: {},
+      comment: ''
     }
   },
   async created () {
-    try {
-      const { data } = await this.$api.get(`/posts/${this.$route.params.id}`)
-      console.log(data)
-      this.post = data
-
-      // TODO: auth check -> token
-    } catch (error) {
-      console.error(error)
-    }
+    await this.updatePost()
   },
   computed: {
     isLogin () {
@@ -28,9 +22,22 @@ export default {
     },
     token () {
       return this.$store.state.token
+    },
+    userId () {
+      return this.$store.state.id
     }
   },
   methods: {
+    async updatePost () {
+      console.log(this.userId, this.token)
+      try {
+        const { data } = await this.$api.get(`/posts/${this.post_id}`)
+        console.log(data)
+        this.post = data
+      } catch (error) {
+        console.error(error)
+      }
+    },
     onClickTextarea () {
       if (!this.isLogin) {
         this.$router.push({
@@ -39,6 +46,32 @@ export default {
             redirect: this.$route.path
           }
         })
+      }
+    },
+    async onClickComment () {
+      try {
+        await this.$api.post(`/comments/${this.post_id}`, {
+          content: this.comment
+        }, {
+          headers: {
+            Authorization: `Bearer ${this.token}`
+          }
+        })
+        this.updatePost()
+      } catch (error) {
+        await this.$swal('에러!', '이미 동의한 청원입니다.', 'error')
+      }
+    },
+    async onClickDelete () {
+      try {
+        await this.$api.delete(`/comments/${this.post_id}`, {
+          headers: {
+            Authorization: `Bearer ${this.token}`
+          }
+        })
+        this.updatePost()
+      } catch (error) {
+        await this.$swal('에러!', '동의하지 않은 청원입니다.', 'error')
       }
     }
   }
@@ -100,9 +133,15 @@ export default {
               <textarea
                 class="post__input"
                 :placeholder="isLogin ? '응원의 댓글을 남겨 주세요.' : '디미고 계정으로 로그인이 필요합니다.'"
+                v-model="comment"
                 @click="onClickTextarea"
               />
-              <div class="post__button">동의</div>
+              <div
+                class="post__button"
+                @click="onClickComment"
+              >
+                동의
+              </div>
             </div>
             <div class="post__comments-list">
               <div
@@ -112,6 +151,13 @@ export default {
               >
                 <span class="post__comment-author">
                   {{ comment.author }}
+                  <span
+                    class="post__comment-delete"
+                    v-if="comment.author_id === userId"
+                    @click="onClickDelete"
+                  >
+                    삭제
+                  </span>
                 </span>
                 <span class="post__comment-content">
                   {{ comment.content }}
@@ -232,6 +278,17 @@ export default {
   &__comment-author {
     font-weight: 600;
     color: black;
+  }
+
+  &__comment-delete {
+    cursor: pointer;
+    font-weight: 500;
+    color: #ed1280;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
 
   &__form {
