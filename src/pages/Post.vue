@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     async updatePost () {
+      this.comment = ''
       console.log(this.userId, this.token)
       try {
         const { data } = await this.$api.get(`/posts/${this.post_id}`)
