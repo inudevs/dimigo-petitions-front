@@ -6,6 +6,12 @@ export default {
   components: {
     DimiHeader
   },
+  props: {
+    redirect: {
+      type: String,
+      default: null
+    }
+  },
   data () {
     return {
       form: {
@@ -21,7 +27,8 @@ export default {
         const { data } = await this.$api.post('/auth/login', this.form)
         console.log(data)
         this.$store.commit('login', data.token)
-        this.$router.push({ name: 'index' })
+        if (this.redirect) this.$router.push(this.redirect)
+        else this.$router.push({ name: 'index' })
       } catch (error) {
         console.error(error)
       }
@@ -53,6 +60,7 @@ export default {
             class="login__input"
             v-model.trim="form.password"
             placeholder="패스워드"
+            @keydown.enter="onClick"
           />
           <div
             class="login__button"
