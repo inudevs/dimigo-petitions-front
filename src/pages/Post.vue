@@ -57,10 +57,6 @@ export default {
       try {
         await this.$api.post(`/comments/${this.post_id}`, {
           content: this.comment
-        }, {
-          headers: {
-            Authorization: `Bearer ${this.token}`
-          }
         })
         this.updatePost()
       } catch (error) {
@@ -69,11 +65,7 @@ export default {
     },
     async onClickDelete () {
       try {
-        await this.$api.delete(`/comments/${this.post_id}`, {
-          headers: {
-            Authorization: `Bearer ${this.token}`
-          }
-        })
+        await this.$api.delete(`/comments/${this.post_id}`)
         this.updatePost()
       } catch (error) {
         await this.$swal('에러!', '동의하지 않은 청원입니다.', 'error')
@@ -87,10 +79,6 @@ export default {
       try {
         await this.$api.put(`/comments/${this.post_id}`, {
           content: this.editComment
-        }, {
-          headers: {
-            Authorization: `Bearer ${this.token}`
-          }
         })
         this.updatePost()
       } catch (error) {
