@@ -46,8 +46,11 @@ export default {
         ]"
       /> -->
       <div class="index__list">
-        <div class="index__title">
-          {{ ['진행중인 청원', '이미 만료된 청원'][tab] }}
+        <div class="index__head">
+          <span class="index__title">{{ ['진행중인 청원', '이미 만료된 청원'][tab] }}</span>
+          <button class="index__button">
+            학교에 청원하기
+          </button>
         </div>
         <div class="index__table">
           <div class="index__row head">
@@ -92,9 +95,28 @@ export default {
   //   margin-top: 1.5rem;
   // }
 
-  &__title {
+  &__head {
     margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__title {
     font-size: 1.5rem;
+  }
+
+  &__button {
+    cursor: pointer;
+    font-size: 0.9rem;
+    background-color: #ed1280;
+    color: white;
+    border: none;
+
+    &:hover,
+    &:focus {
+      background-color: #e00070;
+    }
   }
 
   &__table {
