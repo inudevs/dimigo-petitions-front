@@ -17,7 +17,9 @@ export default {
     <dimi-header />
     <div class="content">
       <div class="write">
-        <h1>청원하기</h1>
+        <h1 class="write__title">
+          청원하기
+        </h1>
       </div>
     </div>
   </div>
@@ -35,5 +37,14 @@ export default {
   border-radius: 8px;
   width: 80%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+
+  &__title {
+    margin: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #868e96;
+  }
 }
 </style>
