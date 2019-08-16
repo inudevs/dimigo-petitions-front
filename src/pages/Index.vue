@@ -48,7 +48,10 @@ export default {
       <div class="index__list">
         <div class="index__head">
           <span class="index__title">{{ ['진행중인 청원', '이미 만료된 청원'][tab] }}</span>
-          <button class="index__button">
+          <button
+            class="index__button"
+            @click="$router.push({ name: 'write' })"
+          >
             학교에 청원하기
           </button>
         </div>
