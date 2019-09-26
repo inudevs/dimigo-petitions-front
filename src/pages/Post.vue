@@ -1,5 +1,6 @@
 <script>
 import DimiHeader from '@/components/DimiHeader'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Post',
@@ -19,15 +20,7 @@ export default {
     await this.updatePost()
   },
   computed: {
-    isLogin () {
-      return this.$store.state.isLogin
-    },
-    token () {
-      return this.$store.state.token
-    },
-    userId () {
-      return this.$store.state.id
-    }
+    ...mapState(['isLogin, token, userId'])
   },
   methods: {
     async updatePost () {
