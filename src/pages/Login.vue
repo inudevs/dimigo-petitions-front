@@ -1,12 +1,6 @@
 <script>
-import DimiHeader from '@/components/DimiHeader'
-import { mapState, mapGetters, mapActions } from 'vuex'
-
 export default {
   name: 'Login',
-  components: {
-    DimiHeader
-  },
   props: {
     redirect: {
       type: String,
@@ -22,7 +16,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['test']),
     async onClick () {
       try {
         console.log(this.form)
@@ -42,86 +35,188 @@ export default {
 
 <template>
   <div class="page">
-    <dimi-header />
     <div class="content">
-      <div class="login">
-        <h1 class="login__title">
-          로그인
-        </h1>
-        <ul class="login__desc">
-          <li>청원에 동의하려면 로그인이 필요합니다. 디미고 아이디로 로그인해 주세요.</li>
-          <li>디미고 아이디를 분실하신 경우, 교내 인트라넷 관리자나 선생님께 문의하세요.</li>
-        </ul>
-        <div class="login__form">
-          <input
-            class="login__input"
-            v-model.trim="form.id"
-            placeholder="디미고 아이디"
-          />
-          <input
-            type="password"
-            class="login__input"
-            v-model.trim="form.password"
-            placeholder="패스워드"
-            @keydown.enter="onClick"
-          />
-          <div
-            class="login__button"
-            @click="test()"
-          >
-            동의하러 가기
+      <div class="card-wrap">
+        <div class="card">
+          <div class="login">
+            <h1 class="login__title">
+              <span class="login__brand">디미청원</span>에 로그인
+            </h1>
+            <p class="login__desc">
+              디미청원은 한국디지털미디어고등학교 학생회와 자율동아리 INU가 함께 운영하는 <strong>교내 학생 건의함</strong> 서비스입니다.
+            </p>
+            <ul class="login__notice">
+              <li>청원에 동의하려면 <strong>로그인</strong>이 필요합니다. 디미고 계정의 아이디 또는 이메일로 로그인해 주세요.</li>
+              <li>디미고 아이디를 분실하신 경우, 교내 인트라넷 관리자나 선생님께 문의하세요.</li>
+            </ul>
+            <div class="login__form">
+              <input
+                class="login__input"
+                v-model.trim="form.id"
+                placeholder="디미고 아이디"
+              />
+              <input
+                type="password"
+                class="login__input"
+                v-model.trim="form.password"
+                placeholder="패스워드"
+                @keydown.enter="onClick"
+              />
+              <div
+                class="login__button"
+                @click="onClick"
+              >
+                동의하러 가기
+              </div>
+            </div>
           </div>
+          <img
+            class="image"
+            :src="require('../assets/login-cover.jpg')"
+          />
         </div>
+        <span class="footer">ⓒ INU 2019</span>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.page {
+  height: auto;
+  margin: 0;
+  background: linear-gradient(to top, #ed1280, #db4a92);
+
+  @media (min-height: 767px) {
+    height: inherit;
+  }
+}
+
 .content {
+  height: -webkit-fill-available;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.card-wrap {
+  height: -webkit-fill-available;
   display: flex;
-  width: 100%;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @media (max-width: 800px) {
+    height: unset;
+  }
+}
+
+.card {
+  max-width: 65rem;
+  min-height: 40rem;
+  box-shadow: 15px 19px 32px -18px rgba(21, 19, 19, .07);
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 800px) {
+    width: 95%;
+    flex-direction: column;
+  }
+
+  @media (max-width: 800px) {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .login {
-  border: 1px solid rgb(201, 201, 201);
-  border-radius: 8px;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 0;
+  width: 50%;
+  padding: 2rem;
+
+  @media (max-width: 800px) {
+    padding: 1.2rem;
+    padding-top: 2rem;
+    width: unset;
+  }
 
   &__title {
     margin: 0;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #868e96;
+    font-size: 2.5rem;
+    display: inline-block;
+    word-break: keep-all;
+    margin-bottom: 1rem;
+
+    @media (max-width: 1000px) {
+      font-size: 2.2rem;
+    }
+
+    @media (max-width: 800px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__brand {
+    color: #ed1280;
   }
 
   &__desc {
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-    width: 60%;
-    box-sizing: border-box;
-    border: 1px solid #868e96;
-    padding: 0.8rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    background-color: rgb(233, 233, 233);
+    margin: 0;
+    font-size: 1.1rem;
+    display: inline-block;
+    word-break: keep-all;
+
+    @media (max-width: 800px) {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
   }
 
-  &__form {
-    width: 60%;
+  &__notice {
+    list-style: none;
+    padding: 0;
+    font-weight: 300;
+    line-height: 1.5;
+    font-size: 1.1rem;
+
+    li {
+      display: inline-block;
+      word-break: keep-all;
+      border-left: 5px solid lightgray;
+      color: gray;
+      padding-left: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    li strong {
+      font-weight: 500;
+    }
+
+    @media (max-width: 800px) {
+      font-size: 0.88rem;
+    }
   }
 
   &__input {
     width: 100%;
     font-size: 1.2rem;
-    padding: 0.5rem;
+    padding: 0.8rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
     box-sizing: border-box;
-    margin-bottom: 0.5rem;
-    border: 1px solid #868e96;
+    margin-bottom: 1.2rem;
+    border-radius: 25px;
+    border: 0;
+    background-color: rgb(241, 241, 241);
+    box-shadow: 15px 19px 32px -18px rgba(21, 19, 19, .07);
+
+    &:focus {
+      outline: none;
+    }
+
+    @media (max-width: 800px) {
+      font-size: 1rem;
+    }
   }
 
   &__button {
@@ -134,6 +229,41 @@ export default {
     background-color: #ed1280;
     font-size: 1.2rem;
     padding: 1rem 0;
+    margin-top: 1rem;
+    border-radius: 25px;
+    border: 0;
+    box-shadow: 15px 19px 32px -18px rgba(21, 19, 19, .07);
+
+    @media (max-width: 800px) {
+      font-size: 1.1rem;
+      padding: 0.8rem 0;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.image {
+  width: 50%;
+  object-fit: cover;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    height: 15rem;
+  }
+}
+
+.footer {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+
+  @media (max-width: 800px) {
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
   }
 }
 </style>

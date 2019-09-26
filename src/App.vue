@@ -11,10 +11,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
 
 * {
-  font-family: 'Spoqa Han Sans', 'Sans-serif';
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .page {

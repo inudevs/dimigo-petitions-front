@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import App from './App'
 import router from './router'
-import store from './store/index'
+import store from './store'
 
 import './style.scss'
 import 'sweetalert2/dist/sweetalert2.min.css'

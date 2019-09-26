@@ -1,6 +1,6 @@
 <script>
 import DimiHeader from '@/components/DimiHeader'
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Post',
