@@ -14,7 +14,7 @@ const beforeEnter = (to, from, next) => {
   })
 }
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -31,7 +31,10 @@ export default new Router({
       path: '/auth/login',
       name: 'login',
       component: () => import(/* webpackChunkName: "login" */ './pages/Login.vue'),
-      props: (route) => ({ redirect: route.query.redirect })
+      props: (route) => ({ redirect: route.query.redirect }),
+      meta: {
+        forbidAuth: true
+      }
     },
     {
       path: '/write',
@@ -41,3 +44,14 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, _, next) => {
+  const { isAuth } = store.getters
+  if (to.meta.forbidAuth) {
+    !isAuth ? next() : next({ name: 'index' })
+  } else {
+    isAuth ? next() : next({ name: 'login' })
+  }
+})
+
+export default router

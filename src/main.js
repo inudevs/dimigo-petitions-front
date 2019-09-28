@@ -12,7 +12,7 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 Vue.use(VueSweetalert2)
 
 Vue.prototype.$api = axios.create({
-  baseURL: 'http://localhost:5000/'
+  baseURL: 'http://api.inudevs.com/api/dimipet/'
 })
 
 Vue.config.productionTip = false

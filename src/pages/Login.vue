@@ -10,7 +10,7 @@ export default {
   data () {
     return {
       form: {
-        id: '',
+        email: '',
         password: ''
       }
     }
@@ -19,10 +19,8 @@ export default {
     async onClick () {
       try {
         console.log(this.form)
-        const { data } = await this.$api.post('/auth/login', this.form)
-        console.log(data)
-        this.$store.commit('login', data.token)
-        this.$store.commit('saveID', data.id)
+        const { data } = await this.$api.post('http://api.inudevs.com/auth/login', this.form)
+        this.$store.commit('login', data)
         if (this.redirect) this.$router.push(this.redirect)
         else this.$router.push({ name: 'index' })
       } catch (error) {
@@ -52,7 +50,7 @@ export default {
             <div class="login__form">
               <input
                 class="login__input"
-                v-model.trim="form.id"
+                v-model.trim="form.email"
                 placeholder="디미고 아이디"
               />
               <input
@@ -85,7 +83,7 @@ export default {
 .page {
   height: auto;
   margin: 0;
-  background: linear-gradient(to top, #ed1280, #db4a92);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8));
 
   @media (min-height: 767px) {
     height: inherit;

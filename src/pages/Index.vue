@@ -111,13 +111,16 @@ export default {
 
   &__button {
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
     background-color: #ed1280;
     color: white;
     border: none;
+    border-radius: 8px;
 
     &:hover,
     &:focus {
+      outline: none;
       background-color: #e00070;
     }
   }
@@ -157,6 +160,10 @@ export default {
       padding: .8rem 1rem;
       color: black;
       font-size: 1.2rem;
+
+      @media (max-width: 870px) {
+        display: none;
+      }
     }
 
     &.head:not(:nth-child(2)) {

@@ -5,6 +5,36 @@ export default {
   name: 'DimiHeader',
   components: {
     DimiNavbar
+  },
+  data () {
+    return {
+      width: 0,
+    }
+  },
+  mounted () {
+    this.updateMobile()
+  },
+  created() {
+    window.addEventListener('resize', this.updateMobile);
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.updateMobile);
+  },
+  computed: {
+    mobile () {
+      return this.width <= 500
+    },
+    headerStyle () {
+      return {
+        backgroundImage:
+        `linear-gradient(rgba(0, 0, 0, .01), rgba(0, 0, 0, ${this.mobile ? '0.5' : '.01'})), url('${require('../assets/hakbong.jpeg')}')`
+      }
+    }
+  },
+  methods: {
+    updateMobile () {
+      this.width = this.$parent.$el.offsetWidth    
+    }
   }
 }
 </script>
@@ -12,10 +42,7 @@ export default {
 <template>
   <div
     class="header"
-    :style="{
-      backgroundImage:
-      'linear-gradient(rgba(0, 0, 0, .01), rgba(0, 0, 0, .01)), url('+require('../assets/hakbong.jpeg')+')'
-    }"
+    :style="headerStyle"
   >
     <a href="/">
       <img class="header__logo" src="../assets/logo.svg">
@@ -44,6 +71,11 @@ export default {
     left: 3em;
     height: 10em;
     cursor: pointer;
+
+    @media (max-width: 500px) {
+      left: 1.5em;
+      height: 8em;
+    }
   }
 
   &__title {
@@ -54,6 +86,10 @@ export default {
     color: #fff;
     font-size: 2.5rem;
     font-weight: 600;
+
+    @media (max-width: 500px) {
+      left: 1.5rem;
+    }
   }
 }
 
