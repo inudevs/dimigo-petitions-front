@@ -52,6 +52,7 @@ export default {
                 class="login__input"
                 v-model.trim="form.email"
                 placeholder="디미고 아이디"
+                @keydown.enter="onClick"
               />
               <input
                 type="password"

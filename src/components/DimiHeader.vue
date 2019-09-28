@@ -8,17 +8,17 @@ export default {
   },
   data () {
     return {
-      width: 0,
+      width: 0
     }
   },
   mounted () {
     this.updateMobile()
   },
-  created() {
-    window.addEventListener('resize', this.updateMobile);
+  created () {
+    window.addEventListener('resize', this.updateMobile)
   },
-  destroyed() {
-    window.removeEventListener('resize', this.updateMobile);
+  destroyed () {
+    window.removeEventListener('resize', this.updateMobile)
   },
   computed: {
     mobile () {
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     updateMobile () {
-      this.width = this.$parent.$el.offsetWidth    
+      this.width = this.$parent.$el.offsetWidth
     }
   }
 }
