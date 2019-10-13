@@ -1,9 +1,11 @@
 <script>
+import DimiButton from '../components/DimiButton'
 import DimiCard from '../components/DimiCard'
 
 export default {
   name: 'Login',
   components: {
+    DimiButton,
     DimiCard
   },
   props: {
@@ -59,12 +61,9 @@ export default {
               <p class="login__desc">
                 한국디지털미디어고등학교 교내 건의함 서비스
               </p>
-              <button
-                class="login__button"
-                @click="enter = true"
-              >
+              <dimi-button :onClick="() => enter = true">
                 ENTER
-              </button>
+              </dimi-button>
             </div>
             <div
               v-else
@@ -81,12 +80,11 @@ export default {
                   type="password"
                 >
               </div>
-              <button
-                class="login__button"
-                @click="onClickLogin"
+              <dimi-button
+                :onClick="onClickLogin"
               >
                 LOGIN
-              </button>
+              </dimi-button>
             </div>
           </div>
           <div class="login__cards">
@@ -219,25 +217,6 @@ export default {
 
     @media (max-width: 630px) {
       font-size: 1.1rem;
-    }
-  }
-
-  &__button {
-    border: none;
-    border-radius: 25px;
-    color: white;
-    background-color: #ed1280;
-    font-size: 1.2rem;
-    font-weight: 800;
-    padding: 0.8rem 2.4rem;
-    margin-top: 1.2rem;
-    font-family: 'Montserrat', sans-serif;
-    user-select: none;
-    cursor: pointer;
-
-    &:active,
-    &:focus {
-      outline: none;
     }
   }
 
