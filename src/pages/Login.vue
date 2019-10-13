@@ -1,6 +1,11 @@
 <script>
+import DimiCard from '../components/DimiCard'
+
 export default {
   name: 'Login',
+  components: {
+    DimiCard
+  },
   props: {
     redirect: {
       type: String,
@@ -85,33 +90,24 @@ export default {
             </div>
           </div>
           <div class="login__cards">
-            <div class="login__card">
-              <img :src="require('../assets/hakbong.jpeg')">
-              <div class="login__card-content">
-                <h1>매점 운영 시간을 연장해 주세요</h1>
-                <span>
-                  <span class="value">300</span>명
-                </span>
-              </div>
-            </div>
-            <div class="login__card">
-              <img :src="require('../assets/hakbong.jpeg')">
-              <div class="login__card-content">
-                <h1>야외 점호를 폐지합시다</h1>
-                <span>
-                  <span class="value">300</span>명
-                </span>
-              </div>
-            </div>
-            <div class="login__card">
-              <img :src="require('../assets/hakbong.jpeg')">
-              <div class="login__card-content">
-                <h1>인강실 사용 제한을 없애주세요</h1>
-                <span>
-                  <span class="value">300</span>명
-                </span>
-              </div>
-            </div>
+            <dimi-card>
+              <h1>매점 운영 시간을 연장해 주세요</h1>
+              <span>
+                <span class="value">300</span>명
+              </span>
+            </dimi-card>
+            <dimi-card>
+              <h1>야외 점호를 폐지합시다</h1>
+              <span>
+                <span class="value">300</span>명
+              </span>
+            </dimi-card>
+            <dimi-card>
+              <h1>인강실 사용 제한을 없애주세요</h1>
+              <span>
+                <span class="value">300</span>명
+              </span>
+            </dimi-card>
           </div>
         </div>
         <div class="login__contributors">
@@ -253,64 +249,6 @@ export default {
 
     @media (max-width: 1000px) {
       width: unset;
-    }
-  }
-
-  &__card {
-    height: 4.8rem;
-    width: 100%;
-    margin-bottom: 0.8rem;
-    background-color: white;
-    border-radius: 20px;
-    color: black;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    box-shadow: 10px 10px 25px -1px rgba(0, 0, 0, .06);
-
-    @media (max-width: 1000px) {
-      width: unset;
-    }
-
-    @media (max-width: 630px) {
-      padding: 0.6rem;
-    }
-
-    img {
-      height: 4rem;
-      width: 4rem;
-      border-radius: 20px;
-      box-shadow: 10px 10px 25px -1px rgba(0, 0, 0, .06);
-      margin-right: 1.2rem;
-    }
-
-    h1 {
-      margin: 0;
-      margin-bottom: 0.2rem;
-      width: 100%;
-      word-break: keep-all;
-      font-size: 1.3rem;
-
-      @media (max-width: 630px) {
-        font-size: 1.1rem;
-      }
-
-      @media (max-width: 380px) {
-        font-size: 1rem;
-      }
-
-      @media (max-width: 360px) {
-        font-size: 0.9rem;
-      }
-    }
-
-    span {
-      font-weight: bold;
-      color: rgba(0, 0, 0, 0.7);
-
-      &.value {
-        color: #ed1280;
-      }
     }
   }
 
