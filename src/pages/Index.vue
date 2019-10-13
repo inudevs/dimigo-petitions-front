@@ -36,10 +36,30 @@ export default {
 </script>
 
 <template>
-  <div class="page">
+  <div class="page index">
     <dimi-header />
     <dimi-menu @click="onClickMenu" />
-    <div class="content">
+    <div class="index__content">
+      <div class="index__side">
+        <div class="index__box">
+          <h1 class="index__box-title">최근 달린 댓글</h1>
+          <p class="index__box-desc">다른 학생이 청원에 동의하면서 단 댓글입니다.</p>
+          <div class="index__box-list">
+            <div class="index__box-error">
+              데이터가 없습니다.
+            </div>
+          </div>
+        </div>
+        <div class="index__box">
+          <h1 class="index__box-title">마감 임박 청원</h1>
+          <p class="index__box-desc">마감 시간이 얼마 남지 않은 청원입니다.</p>
+          <div class="index__box-list">
+            <div class="index__box-error">
+              데이터가 없습니다.
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="index__list">
         <div class="index__head">
           <div class="index__head-content">
@@ -53,7 +73,7 @@ export default {
             학교에 청원하기
           </dimi-button>
         </div>
-        <div class="index__table">
+        <div class="index__cards">
           <dimi-long-card
             class="index__card"
             v-for="(item, idx) in list"
@@ -92,10 +112,21 @@ export default {
 
 <style lang="scss" scoped>
 .index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  // &__list {
-  //   margin-top: 1.5rem;
-  // }
+  &__content {
+    margin-top: 1.5rem;
+    width: 80%;
+    display: flex;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+  }
 
   &__head {
     margin-bottom: 1.2rem;
@@ -114,13 +145,14 @@ export default {
     font-weight: 700;
   }
 
-  &__table {
+  &__cards {
     display: flex;
     flex-direction: column;
   }
 
   &__card {
     transition: 0.5s;
+    margin-bottom: 0.8rem;
 
     &-main,
     &-side {
@@ -153,6 +185,38 @@ export default {
 
     &:hover {
       transform: scale(1.02);
+    }
+  }
+
+  &__side {
+    width: 20rem;
+    flex-shrink: 0;
+    margin-right: 2rem;
+  }
+
+  &__box {
+    border-radius: 25px;
+    box-shadow: 10px 10px 25px -1px rgba(0, 0, 0, .06);
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+
+    &-title {
+      font-size: 1.2rem;
+    }
+
+    &-desc {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    &-list {
+      border-top: 1px solid rgba(134, 141, 134, 0.5);
+      padding-top: 0.5rem;
+    }
+
+    &-error {
+      color: #868e86;
+      text-align: center;
     }
   }
 }

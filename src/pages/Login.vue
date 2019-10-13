@@ -92,19 +92,19 @@ export default {
             </div>
           </div>
           <div class="login__cards">
-            <dimi-card>
+            <dimi-card class="login__card">
               <h1>매점 운영 시간을 연장해 주세요</h1>
               <span>
                 <span class="value">300</span>명
               </span>
             </dimi-card>
-            <dimi-card>
+            <dimi-card class="login__card">
               <h1>야외 점호를 폐지합시다</h1>
               <span>
                 <span class="value">300</span>명
               </span>
             </dimi-card>
-            <dimi-card>
+            <dimi-card class="login__card">
               <h1>인강실 사용 제한을 없애주세요</h1>
               <span>
                 <span class="value">300</span>명
@@ -233,6 +233,10 @@ export default {
     @media (max-width: 1000px) {
       width: unset;
     }
+  }
+
+  &__card {
+    margin-bottom: 0.8rem;
   }
 
   &__contributors {

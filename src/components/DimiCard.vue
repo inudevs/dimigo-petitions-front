@@ -22,7 +22,6 @@ export default {
 .card {
   height: 4.8rem;
   width: 100%;
-  margin-bottom: 0.8rem;
   background-color: white;
   border-radius: 20px;
   color: black;
