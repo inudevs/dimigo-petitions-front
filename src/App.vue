@@ -18,6 +18,10 @@ export default {
   font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
 }
 
+h1, p {
+  margin: 0;
+}
+
 .page {
   margin-bottom: 2rem;
 }

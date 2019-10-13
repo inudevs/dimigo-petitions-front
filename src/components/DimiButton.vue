@@ -32,9 +32,10 @@ button {
   user-select: none;
   cursor: pointer;
 
-  &:active,
+  &:hover,
   &:focus {
     outline: none;
+    background-color: #e00070;
   }
 }
 </style>

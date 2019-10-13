@@ -1,14 +1,16 @@
 <script>
+import DimiButton from '@/components/DimiButton'
 import DimiHeader from '@/components/DimiHeader'
+import DimiLongCard from '@/components/DimiLongCard'
 import DimiMenu from '@/components/DimiMenu'
-// import FieldView from '@/components/FieldView'
 
 export default {
   name: 'Index',
   components: {
+    DimiButton,
+    DimiLongCard,
     DimiHeader,
     DimiMenu
-    // ,FieldView
   },
   methods: {
     onClickMenu (value) {
@@ -38,53 +40,50 @@ export default {
     <dimi-header />
     <dimi-menu @click="onClickMenu" />
     <div class="content">
-      <!-- <field-view /> -->
-      <!-- <dimi-menu
-        :menu="[
-          { name: '진행중 청원', onClick: onClickProceeding },
-          { name: '만료된 청원', onClick: onClickExpired }
-        ]"
-      /> -->
       <div class="index__list">
         <div class="index__head">
-          <span class="index__title">{{ ['진행중인 청원', '이미 만료된 청원'][tab] }}</span>
-          <button
+          <div class="index__head-content">
+            <h1 class="index__title">{{ ['진행중인 청원', '이미 만료된 청원'][tab] }}</h1>
+            <p>학교와 학생회에 여러분의 의견을 전달하세요.</p>
+          </div>
+          <dimi-button
             class="index__button"
-            @click="$router.push({ name: 'write' })"
+            :onClick="() => $router.push({ name: 'write' })"
           >
             학교에 청원하기
-          </button>
+          </dimi-button>
         </div>
         <div class="index__table">
-          <div class="index__row head">
-            <div class="index__cell head">번호</div>
-            <div class="index__cell head">분류</div>
-            <div class="index__cell head">제목</div>
-            <div class="index__cell head">청원 만료일</div>
-            <div class="index__cell head">참여인원</div>
-          </div>
-          <div
-            class="index__row"
+          <dimi-long-card
+            class="index__card"
             v-for="(item, idx) in list"
             :key="idx"
-            @click="$router.push({ name: 'post', params: { id: item.id } })"
+            :onClick="() => $router.push({ name: 'post', params: { id: item.id } })"
           >
-            <div class="index__cell">
-              {{ item.idx }}
-            </div>
-            <div class="index__cell">
-              {{ item.topic }}
-            </div>
-            <div class="index__cell">
-              {{ item.name }}
-            </div>
-            <div class="index__cell">
-              {{ item.expire }}
-            </div>
-            <div class="index__cell">
-              {{ item.likes.toLocaleString() }}명
-            </div>
-          </div>
+            <template slot="main">
+              <div class="index__card-main">
+                <span class="index__card-row">
+                  <span class="index__card-idx">
+                    #{{ item.idx }}
+                  </span>
+                  <span class="index__card-topic">
+                    {{ item.topic }}
+                  </span>
+                </span>
+                <h1>{{ item.name }}</h1>
+              </div>
+            </template>
+            <template slot="side">
+              <div class="index__card-side">
+                <span class="index__card-expire">
+                  {{ item.expire }}까지
+                </span>
+                <span class="index__card-likes">
+                  현재 동의 수 <span class="value">{{ item.likes.toLocaleString() }}</span>명
+                </span>
+              </div>
+            </template>
+          </dimi-long-card>
         </div>
       </div>
     </div>
@@ -106,23 +105,13 @@ export default {
   }
 
   &__title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   &__button {
-    cursor: pointer;
+    padding: 0.8rem 1.8rem;
     font-size: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #ed1280;
-    color: white;
-    border: none;
-    border-radius: 8px;
-
-    &:hover,
-    &:focus {
-      outline: none;
-      background-color: #e00070;
-    }
+    font-weight: 700;
   }
 
   &__table {
@@ -130,60 +119,40 @@ export default {
     flex-direction: column;
   }
 
-  &__row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid rgb(230, 230, 230);
+  &__card {
+    transition: 0.5s;
 
-    &.head {
-      border-top: 2px solid black;
+    &-main,
+    &-side {
+      display: flex;
+      flex-direction: column;
     }
 
-    &:not(.head) {
-      cursor: pointer;
+    &-row {
+      font-weight: 500;
+      margin-bottom: 0.2rem;
     }
 
-    &:not(.head):hover {
-      background-color: rgb(248, 248, 248);
+    &-topic {
+      color: #ed1280;
     }
-  }
 
-  &__cell {
-    display: flex;
-    color: rgb(46, 46, 46);
-    padding: 1.2rem 1rem;
-    font-size: 1.1rem;
+    &-expire {
+      color: rgba(0, 0, 0, 0.7);
+    }
 
-    &.head {
-      justify-content: center;
-      padding: .8rem 1rem;
-      color: black;
-      font-size: 1.2rem;
+    &-likes {
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.7);
 
-      @media (max-width: 870px) {
-        display: none;
+      .value {
+        font-size: 1.5rem;
+        color: #ed1280;
       }
     }
 
-    &.head:not(:nth-child(2)) {
-      font-weight: 300;
-    }
-
-    &:nth-child(2):not(.head) {
-      color: #ed1280;
-    }
-
-    &:nth-child(3) {
-      width: 40%;
-    }
-
-    &:nth-child(4):not(.head) {
-      color: #868e96;
-    }
-
-    &:last-child:not(.head) {
-      color: #ed1280;
+    &:hover {
+      transform: scale(1.02);
     }
   }
 }
