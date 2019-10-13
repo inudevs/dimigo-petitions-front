@@ -9,7 +9,9 @@ export default {
   data () {
     return {
       post_id: this.$route.params.id,
-      post: {},
+      post: {
+        likes: 0
+      },
       comment: '',
       editComment: '',
       edit: false

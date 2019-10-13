@@ -7,7 +7,25 @@ export default {
     DimiHeader
   },
   data () {
-    return {}
+    return {
+      post: {
+        name: '',
+        content: '',
+        image: '',
+        topic: ''
+      }
+    }
+  },
+  methods: {
+    async onClickSubmit () {
+      try {
+        const { data: { post_id: id } } = await this.$api.post('/posts/', this.post)
+        await this.$swal('청원을 등록했습니다!', '청원 페이지로 이동합니다.', 'success')
+        this.$router.push({ name: 'post', params: { id } })
+      } catch (error) {
+        await this.$swal('에러!', error.message, 'error')
+      }
+    }
   }
 }
 </script>
@@ -20,6 +38,13 @@ export default {
         <h1 class="write__title">
           청원하기
         </h1>
+        <div class="form">
+          <input v-model="post.name" placeholder="제목" />
+          <textarea v-model="post.content" placeholder="내용" />
+          <input v-model="post.image" placeholder="이미지 URL" />
+          <input v-model="post.topic" placeholder="분류" />
+        </div>
+        <button @click="onClickSubmit">청원하기</button>
       </div>
     </div>
   </div>
