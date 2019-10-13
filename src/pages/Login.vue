@@ -115,12 +115,9 @@ export default {
           </div>
         </div>
         <div class="login__contributors">
-          <span>INU 2019</span>
-          <span>여준호</span>
-          <span>문형일</span>
-          <span>장종우</span>
-          <span>김한경</span>
-          <span>박승아</span>
+          <span class="inu">© INU 2019</span>
+          <strong>개발</strong> 여준호 문형일 장종우
+          <strong>디자인</strong> 김한경 박승아
         </div>
       </section>
     </div>
@@ -321,6 +318,8 @@ export default {
     position: absolute;
     bottom: 3rem;
     right: 3rem;
+    font-weight: 400;
+    color: #aaa;
 
     @media (max-width: 400px) {
       position: unset;
@@ -331,13 +330,12 @@ export default {
     }
 
     span {
-      font-weight: 300;
-      color: #aaa;
-      margin-left: 0.3rem;
+      margin-right: 0.5rem;
+    }
 
-      &:first-child {
-        color: #888;
-      }
+    strong {
+      font-weight: 500;
+      color: #888;
     }
   }
 
