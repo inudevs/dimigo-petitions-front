@@ -1,10 +1,16 @@
 <script>
+import DimiButton from '../components/DimiButton'
 import DimiHeader from '@/components/DimiHeader'
+import DimiInput from '../components/DimiInput'
+import DimiTextarea from '../components/DimiTextarea'
 
 export default {
   name: 'Write',
   components: {
-    DimiHeader
+    DimiButton,
+    DimiHeader,
+    DimiInput,
+    DimiTextarea
   },
   data () {
     return {
@@ -38,13 +44,15 @@ export default {
         <h1 class="write__title">
           청원하기
         </h1>
-        <div class="form">
-          <input v-model="post.name" placeholder="제목" />
-          <textarea v-model="post.content" placeholder="내용" />
-          <input v-model="post.image" placeholder="이미지 URL" />
-          <input v-model="post.topic" placeholder="분류" />
+        <div class="write__form">
+          <dimi-input v-model="post.name" placeholder="제목" />
+          <dimi-textarea v-model="post.content" placeholder="내용" />
+          <dimi-input v-model="post.image" placeholder="이미지 URL" />
+          <dimi-input v-model="post.topic" placeholder="분류" />
         </div>
-        <button @click="onClickSubmit">청원하기</button>
+        <dimi-button :onClick="onClickSubmit">
+          WRITE
+        </dimi-button>
       </div>
     </div>
   </div>
@@ -70,6 +78,17 @@ export default {
     margin: 0;
     padding-bottom: 1rem;
     border-bottom: 1px solid #868e96;
+  }
+
+  &__form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+    input,
+    textarea {
+      margin-top: 0.8rem;
+    }
   }
 }
 </style>

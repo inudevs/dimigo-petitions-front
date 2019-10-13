@@ -1,12 +1,14 @@
 <script>
 import DimiButton from '../components/DimiButton'
 import DimiCard from '../components/DimiCard'
+import DimiInput from '../components/DimiInput'
 
 export default {
   name: 'Login',
   components: {
     DimiButton,
-    DimiCard
+    DimiCard,
+    DimiInput
   },
   props: {
     redirect: {
@@ -70,15 +72,17 @@ export default {
               class="login__form"
             >
               <div class="login__form-content">
-                <input
+                <dimi-input
+                  class="login__input"
                   v-model="form.email"
                   placeholder="디미고 아이디"
-                >
-                <input
+                />
+                <dimi-input
+                  class="login__input"
                   v-model="form.password"
                   placeholder="패스워드"
                   type="password"
-                >
+                />
               </div>
               <dimi-button
                 :onClick="onClickLogin"
@@ -256,30 +260,20 @@ export default {
     }
   }
 
+  &__input {
+    margin-top: 0.8rem;
+    width: 80%;
+
+    @media (max-width: 400px) {
+      width: unset;
+    }
+  }
+
   &__form {
 
     &-content {
       display: flex;
       flex-direction: column;
-    }
-
-    input {
-      width: 80%;
-      background-color: #fae7f1;
-      border: none;
-      border-radius: 24px;
-      font-size: 1.1rem;
-      padding: 1rem 1.2rem;
-      margin-top: 0.8rem;
-
-      @media (max-width: 400px) {
-        width: unset;
-      }
-
-      &:active,
-      &:focus {
-        outline: none;
-      }
     }
   }
 }
