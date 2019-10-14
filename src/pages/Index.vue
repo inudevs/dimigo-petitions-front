@@ -90,7 +90,9 @@ export default {
                     {{ item.topic }}
                   </span>
                 </span>
-                <h1>{{ item.name }}</h1>
+                <h1 class="index__card-title">
+                  {{ item.name }}
+                </h1>
               </div>
             </template>
             <template slot="side">
@@ -169,6 +171,10 @@ export default {
       color: #ed1280;
     }
 
+    &-title {
+      font-size: 1.7rem;
+    }
+
     &-expire {
       color: rgba(0, 0, 0, 0.7);
     }
@@ -180,6 +186,7 @@ export default {
       .value {
         font-size: 1.5rem;
         color: #ed1280;
+        margin: 0 0.2rem;
       }
     }
 

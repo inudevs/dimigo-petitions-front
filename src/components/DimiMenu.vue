@@ -13,6 +13,11 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      tab: 0
+    }
+  },
   methods: {
     onClick (item) {
       if (item.onClick) return item.onClick()
@@ -28,6 +33,7 @@ export default {
       class="menu__item"
       v-for="(item, idx) in menu"
       :key="idx"
+      :class="{ selected: (idx === tab) }"
       @click="onClick(item)"
     >
       {{ item.name }}
@@ -38,10 +44,10 @@ export default {
 <style lang="scss" scoped>
 .menu {
   display: flex;
-  width: 100%;
+  width: 80%;
   flex-direction: row;
   justify-content: space-around;
-  border: 1px solid #868e96;
+  // border: 1px solid #868e96;
 
   &__item {
     display: flex;
@@ -53,13 +59,19 @@ export default {
     color: #868e96;
     cursor: pointer;
     font-size: 1.2rem;
-    font-weight: 400;
+    font-weight: 700;
     user-select: none;
+    border-bottom: 3px solid transparent;
   }
 
-  &__item:not(:last-of-type) {
-    border-right: 1px solid #868e86;
+  &__item.selected {
+    color: #e00070;
+    border-bottom: 3px solid #e00070;
   }
+
+  // &__item:not(:last-of-type) {
+  //   border-right: 1px solid #868e86;
+  // }
 }
 
 a {

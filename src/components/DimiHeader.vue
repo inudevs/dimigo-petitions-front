@@ -1,33 +1,34 @@
 <script>
-import DimiNavbar from '@/components/DimiNavbar'
+// import DimiNavbar from '@/components/DimiNavbar'
 
 export default {
   name: 'DimiHeader',
-  components: {
-    DimiNavbar
-  },
-  data () {
-    return {
-      width: 0
-    }
-  },
-  mounted () {
-    this.updateMobile()
-  },
-  created () {
-    window.addEventListener('resize', this.updateMobile)
-  },
-  destroyed () {
-    window.removeEventListener('resize', this.updateMobile)
-  },
+  // components: {
+  //   DimiNavbar
+  // },
+  // data () {
+  //   return {
+  //     width: 0
+  //   }
+  // },
+  // mounted () {
+  //   this.updateMobile()
+  // },
+  // created () {
+  //   window.addEventListener('resize', this.updateMobile)
+  // },
+  // destroyed () {
+  //   window.removeEventListener('resize', this.updateMobile)
+  // },
   computed: {
-    mobile () {
-      return this.width <= 500
-    },
+    // mobile () {
+    //   return this.width <= 500
+    // },
     headerStyle () {
       return {
         backgroundImage:
-        `linear-gradient(rgba(0, 0, 0, .01), rgba(0, 0, 0, ${this.mobile ? '0.5' : '.01'})), url('${require('../assets/hakbong.jpeg')}')`
+        // `linear-gradient(rgba(0, 0, 0, .01), rgba(0, 0, 0, ${this.mobile ? '0.5' : '.01'})), url('${require('../assets/hakbong.jpeg')}')`
+        `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('${require('../assets/hakbong.jpeg')}')`
       }
     }
   },
@@ -44,20 +45,27 @@ export default {
     class="header"
     :style="headerStyle"
   >
-    <a href="/">
-      <img class="header__logo" src="../assets/logo.svg">
-    </a>
-    <dimi-navbar />
-    <h1 class="header__title">
-      디미청원
-    </h1>
+    <div class="header__top">
+      <div class="header__top-content">
+        <a href="/">
+          <img class="header__logo" src="../assets/logo.svg">
+        </a>
+      </div>
+    </div>
+    <div class="header__content">
+      <h1 class="header__title">
+        바꾸고 싶은 것이 있나요?
+      </h1>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
 .header {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 25em;
   background-position: center 0;
@@ -65,26 +73,45 @@ export default {
   background-size: cover;
   vertical-align: middle;
 
-  &__logo {
+  &__top {
     position: absolute;
     top: 0;
-    left: 3em;
+    width: 80%;
+    height: 5rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 10px 10px 25px -1px rgba(0, 0, 0, .06);
+
+    &-content {
+      width: 90%;
+    }
+  }
+
+  &__logo {
     height: 10em;
     cursor: pointer;
 
     @media (max-width: 500px) {
-      left: 1.5em;
       height: 8em;
     }
+  }
+
+  &__content {
+    position: relative;
+    height: 100%;
+    width: 80%;
   }
 
   &__title {
     position: absolute;
     bottom: 1.5rem;
-    left: 8rem;
     margin: 0;
     color: #fff;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 600;
 
     @media (max-width: 500px) {
